@@ -14,7 +14,7 @@ export async function adminLogin(req, res) {
         if (!admin) {
             return res.status(401).json({ ok: false, message: "invalid credentials" });
         }
-        if (admin.Password !== password) {
+        if (admin.password !== password) {
             return res.status(401).json({ ok: false, message: "invalid credentials" });
         }
         const payload = { email: admin.email };

@@ -20,7 +20,7 @@ export async function adminSignup(req, res) {
         // Create admin
         const newAdmin = await adminModel.create({
             email,
-            Password: password, // using same field name as your model
+            password: password, // using same field name as your model
         });
         return res.status(201).json({
             ok: true,

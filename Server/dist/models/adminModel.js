@@ -7,7 +7,7 @@ const AdminSchema = new Schema({
         lowercase: true,
         trim: true,
     },
-    Password: {
+    password: {
         type: String,
         required: true,
         minlength: 6,
