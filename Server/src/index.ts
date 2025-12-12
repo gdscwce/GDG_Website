@@ -1,12 +1,20 @@
 import express from "express"
 import mongoose from "mongoose";
 import dotenv from "dotenv"
+import { adminSignup } from "./controllers/signupController.js";
+import { adminLogin } from "./controllers/loginController.js";
 dotenv.config();
 
 
 const app = express();
 const PORT = process.env.PORT;
 
+
+
+
+app.post('/api/login', adminLogin);
+app.post('/api/signup', adminSignup);
+app.use(express.json());
 
 
 
