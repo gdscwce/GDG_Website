@@ -1,1 +1,0 @@
-{"version":3,"file":"yearGroupModel.d.ts","sourceRoot":"","sources":["../../src/models/yearGroupModel.ts"],"names":[],"mappings":"AAAA,OAAO,EAAiB,KAAK,EAAE,QAAQ,EAAE,MAAM,UAAU,CAAC;AAE1D,MAAM,WAAW,UAAW,SAAQ,QAAQ;IAC1C,IAAI,EAAE,MAAM,CAAC;IACb,MAAM,EAAE,KAAK,CAAC,QAAQ,EAAE,CAAC;IACzB,OAAO,EAAE,KAAK,CAAC,QAAQ,EAAE,CAAC;CAC3B;AAQD,eAAO,MAAM,cAAc;;;;mBAAkD,CAAC"}
