@@ -23,7 +23,7 @@ export async function adminLogin(req: Request, res: Response) {
       return res.status(401).json({ ok: false, message: "invalid credentials" });
     }
 
-    if (admin.password !== password) {
+    if (admin.Password !== password) {
       return res.status(401).json({ ok: false, message: "invalid credentials" });
     }
 
