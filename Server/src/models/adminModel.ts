@@ -2,7 +2,7 @@ import { Schema, model, Document } from "mongoose";
 
 export interface IAdmin extends Document {
   email: string;
-  Token: string; 
+  Password: string; 
 }
 
 const AdminSchema = new Schema<IAdmin>(
@@ -14,7 +14,7 @@ const AdminSchema = new Schema<IAdmin>(
       lowercase: true,
       trim: true,
     },
-    Token: {
+    Password: {
       type: String,
       required: true,
       minlength: 6,
