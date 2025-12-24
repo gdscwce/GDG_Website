@@ -4,14 +4,22 @@ export interface IEvent extends Document {
   eventName: string;
   eventInfo: string;
   eventDate: Date;
-  eventImagesKey: string[];
+  eventThumbnailKey: string;
+  eventsubImagesKey: string[];
+  yearGroup: Schema.Types.ObjectId;
 }
 
 const eventSchema = new Schema<IEvent>({
   eventName: { type: String, required: true },
   eventInfo: { type: String, required: true },
   eventDate: { type: Date, required: true },
-  eventImagesKey: [{ type: String }],
+  eventThumbnailKey: { type: String },
+  eventsubImagesKey: [{ type: String }],
+  yearGroup: {
+    type: Schema.Types.ObjectId,
+    ref: "YearGroup",
+    required: true,
+  },
 });
 
 export const eventModel = model<IEvent>("Event", eventSchema);

@@ -6,6 +6,8 @@ export interface IMember extends Document {
   memberBranch: string;
   mail: string;
   linkedin: string;
+
+  yearGroup: Schema.Types.ObjectId;
 }
 
 const memberSchema = new Schema<IMember>({
@@ -14,6 +16,15 @@ const memberSchema = new Schema<IMember>({
   memberBranch: { type: String, required: true },
   mail: { type: String },
   linkedin: { type: String },
+
+  yearGroup: {
+    type: Schema.Types.ObjectId,
+    ref: "YearGroup",
+    required: true,
+  },
+
 });
+
+
 
 export const memberModel = model<IMember>("Member", memberSchema);
