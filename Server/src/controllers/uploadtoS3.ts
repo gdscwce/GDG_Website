@@ -9,7 +9,7 @@ const uploadimage = async (filename : string, filebuffer : Buffer) => {
             Bucket: process.env.S3_BUCKET_NAME!,
             Key: s3key,
             Body: filebuffer, 
-            ACL: "public-read",
+            // ACL: "public-read",
         }
 
         const command = new PutObjectCommand(uploadparam as any)

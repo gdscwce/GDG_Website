@@ -72,3 +72,5 @@ const deleteThumbnail = async (req: Request, res: Response) => {
     }
   };
   
+
+export { addOrEditThumbnail, deleteThumbnail };

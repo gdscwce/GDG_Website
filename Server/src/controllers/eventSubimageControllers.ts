@@ -80,4 +80,5 @@ const deleteSubImage = async (req: Request, res: Response) => {
       });
     }
 };
-  
+
+export { addSubImages, deleteSubImage };
