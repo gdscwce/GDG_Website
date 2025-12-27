@@ -31,7 +31,7 @@ export async function adminLogin(req: Request, res: Response) {
 
     const token = jwt.sign(payload, JWT_SECRET);
 
-    return res.json({ ok: true, token });
+    return res.status(200).json({ ok: true, token });
 
   } catch (err) {
     console.error("adminLogin error:", err);

@@ -1,13 +1,17 @@
 import express from "express";
 import mongoose from "mongoose";
+import cors from "cors";
 import dotenv from "dotenv";
 import adminRouter from "./routes/adminRoutes.js";
+import commonGetRouter from "./routes/commongetRoutes.js";
 const app = express();
 const PORT = process.env.PORT ? parseInt(process.env.PORT) : 3000;
 dotenv.config();
+app.use(cors());
 app.use(express.json());
 // Routes
 app.use("/admin", adminRouter);
+app.use("/public", commonGetRouter);
 const db_uri = process.env.MONGO_URI;
 const mongoconnect = async () => {
     try {
