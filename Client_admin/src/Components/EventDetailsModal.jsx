@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import api from "../api/axios";
+import ENV from "../config/env";
 
 function EventDetailsModal({ eventId, onClose }) {
   const [eventData, setEventData] = useState(null);
@@ -119,7 +120,7 @@ function EventDetailsModal({ eventId, onClose }) {
           {eventData.eventThumbnailKey ? (
             <>
               <img
-                src={`https://gdgwce-web.s3.ap-south-1.amazonaws.com/${eventData.eventThumbnailKey}`}
+                src={`https://${ENV.PUBLIC_S3_URL}/${eventData.eventThumbnailKey}`}
                 className="w-48 h-32 object-cover mb-2"
               />
               <div className="flex gap-2">
@@ -167,7 +168,7 @@ function EventDetailsModal({ eventId, onClose }) {
             {eventData.eventsubImagesKey?.map((key) => (
               <div key={key} className="relative">
                 <img
-                  src={`https://gdgwce-web.s3.ap-south-1.amazonaws.com/${key}`}
+                  src={`https:/${ENV.PUBLIC_S3_URL}/${key}`}
                   className="w-24 h-24 object-cover"
                 />
                 <button

@@ -1,3 +1,4 @@
+import ENV from "../config/env";
 function MemberCard({ member, onClick }) {
   return (
     <div
@@ -7,7 +8,7 @@ function MemberCard({ member, onClick }) {
       {/* IMAGE */}
       {member.memberImageKey ? (
         <img
-          src={`https://gdgwce-web.s3.ap-south-1.amazonaws.com/${member.memberImageKey}`}
+          src={`https://${ENV.PUBLIC_S3_URL}/${member.memberImageKey}`}
           className="w-full h-24 object-cover"
         />
       ) : (
