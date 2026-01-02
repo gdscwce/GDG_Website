@@ -8,6 +8,7 @@ import { addMembers, deleteMember, editMember } from "../controllers/memberContr
 import { imageUpload } from "../middlewares/multerMiddleware.js";
 import { addOrEditThumbnail, deleteThumbnail } from "../controllers/thumbnailimageControllers.js";
 import { addSubImages, deleteSubImage } from "../controllers/eventSubimageControllers.js";
+import { deleteMemberImage, uploadMemberImage } from "../controllers/memberImages.js";
 const adminRouter = express.Router();
 
 adminRouter.post('/signup', adminSignup);
@@ -26,17 +27,25 @@ adminRouter.post('/editevent/:id', authMiddleware, editEvent);
 adminRouter.post('/deleteevent/:id', authMiddleware, deleteEvent);
 
 
+// Events image routes
+adminRouter.post('/:eventId/thumbnail', authMiddleware, imageUpload.single("thumbnail"), addOrEditThumbnail);
+adminRouter.delete('/:eventId/thumbnail', authMiddleware, deleteThumbnail);
+adminRouter.post('/:eventId/sub-images', authMiddleware,  imageUpload.array("images", 10), addSubImages);
+adminRouter.delete('/:eventId/sub-images/:imageKey', authMiddleware, deleteSubImage);
+
+
 // member routes
 adminRouter.post('/addmembers', authMiddleware, addMembers);
 adminRouter.post('/editmember/:id', authMiddleware, editMember);
 adminRouter.post('/deletemember/:id', authMiddleware, deleteMember);
 
 
-// image routes
-adminRouter.post('/:eventId/thumbnail', authMiddleware, imageUpload.single("thumbnail"), addOrEditThumbnail);
-adminRouter.delete('/:eventId/thumbnail', authMiddleware, deleteThumbnail);
-adminRouter.post('/:eventId/sub-images', authMiddleware,  imageUpload.array("images", 10), addSubImages);
-adminRouter.delete('/:eventId/sub-images/:imageKey', authMiddleware, deleteSubImage);
+// member images routes
+adminRouter.post('/member/:memberId/image',authMiddleware, imageUpload.single("image"),uploadMemberImage);
+adminRouter.delete('/member/:memberId/image',authMiddleware, imageUpload.single("image"),deleteMemberImage);
+
+
+
 
 
 export default adminRouter;

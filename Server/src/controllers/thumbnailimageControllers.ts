@@ -1,6 +1,8 @@
 import type { Request, Response } from "express";
 import { eventModel } from "../models/eventModel.js";
 import uploadimage from "./uploadtoS3.js";
+import { DeleteObjectCommand } from "@aws-sdk/client-s3";
+import s3Client from "../utils/s3client.js";
 
 const addOrEditThumbnail = async (req: Request, res: Response) => {
   try {
@@ -43,34 +45,45 @@ const addOrEditThumbnail = async (req: Request, res: Response) => {
   }
 };
 
-
 const deleteThumbnail = async (req: Request, res: Response) => {
-    try {
-      const { eventId } = req.params;
-  
-      const event = await eventModel.findById(eventId);
-      if (!event || !event.eventThumbnailKey) {
-        return res.status(404).json({
-          ok: false,
-          message: "thumbnail not found",
-        });
-      }
-  
-      event.eventThumbnailKey = "";
-      await event.save();
-  
-      return res.status(200).json({
-        ok: true,
-        message: "thumbnail removed successfully",
-      });
-    } catch (err) {
-      console.error("deleteThumbnail error:", err);
-      return res.status(500).json({
+  try {
+    const { eventId } = req.params;
+
+    const event = await eventModel.findById(eventId);
+    if (!event || !event.eventThumbnailKey) {
+      return res.status(404).json({
         ok: false,
-        message: "internal server error",
+        message: "thumbnail not found",
       });
     }
-  };
-  
+
+    const thumbnailKey = event.eventThumbnailKey;
+
+    // 🔥 DELETE FROM S3
+    const deleteParams = {
+      Bucket: process.env.S3_BUCKET_NAME!,
+      Key: thumbnailKey,
+    };
+
+    const command = new DeleteObjectCommand(deleteParams);
+    await s3Client.send(command);
+
+    // 🔥 REMOVE FROM DB
+    event.eventThumbnailKey = "";
+    await event.save();
+
+    return res.status(200).json({
+      ok: true,
+      message: "thumbnail deleted successfully",
+    });
+  } catch (err) {
+    console.error("deleteThumbnail error:", err);
+    return res.status(500).json({
+      ok: false,
+      message: "internal server error",
+    });
+  }
+};
+
 
 export { addOrEditThumbnail, deleteThumbnail };

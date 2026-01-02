@@ -17,7 +17,7 @@ function Login() {
       const res = await api.post("/admin/login", data);
       if(res.status === 200){
         alert("Login successful");
-        localStorage.setItem("adminToken", res.data.token);
+        localStorage.setItem("token", res.data.token);
         window.location.href = "/dashboard";
       }
     }catch(e){
