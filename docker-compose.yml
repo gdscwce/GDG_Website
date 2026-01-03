@@ -1,0 +1,27 @@
+services: 
+  
+  server: 
+    build:
+      context: ./Server
+      dockerfile: ../Docker/dockerfile.server
+    
+    container_name: server_container  
+    ports: 
+        - "3000:3000"
+    env_file:
+        - ./Server/.env
+
+  client_admin:
+    build: 
+      context: ./Client_admin
+      dockerfile: ../Docker/dockerfile.client_admin
+    container_name: client_admin_container
+    ports: 
+        - "5173:5173"
+    env_file:
+        - ./Client_admin/.env
+    depends_on:
+        - server
+
+    
+      
