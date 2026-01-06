@@ -22,7 +22,7 @@ jobs:
       - name: Build and Push Backend Image
         uses: docker/build-push-action@v4
         with:
-          context: .
+          context: ./Server
           file: ./Docker/dockerfile.server
           push: true
           tags: |
