@@ -22,8 +22,8 @@ jobs:
       - name: Build and Push Backend Image
         uses: docker/build-push-action@v4
         with:
-          context: ./Server
-          file: ../Docker/dockerfile.server
+          context: .
+          file: ./Docker/dockerfile.server
           push: true
           tags: |
             dhanraj11/gdg-website-server:latest
