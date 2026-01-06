@@ -21,7 +21,7 @@ jobs:
                 key: ${{ secrets.SERVER_SSH_KEY }}
                 
                 script: |
-                    DEPLOY_DIR=~/simple-testing-app
+                    DEPLOY_DIR=~/gdg-website
 
                     echo "Checking deployment directory..."
                     if [ ! -d "$DEPLOY_DIR" ]; then
