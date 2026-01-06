@@ -1,27 +1,27 @@
-services: 
-  
-  server: 
+services:
+  server:
     build:
       context: ./Server
       dockerfile: ../Docker/dockerfile.server
-    
-    container_name: server_container  
-    ports: 
-        - "3000:3000"
     env_file:
-        - ./Server/.env
+      - ./Server/.env
 
   client_admin:
-    build: 
+    build:
       context: ./Client_admin
       dockerfile: ../Docker/dockerfile.client_admin
-    container_name: client_admin_container
-    ports: 
-        - "5173:5173"
     env_file:
-        - ./Client_admin/.env
+      - ./Client_admin/.env
     depends_on:
-        - server
+      - server
 
-    
-      
+  nginx:
+    image: nginx:1.25-alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./Nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./Nginx/sites:/etc/nginx/conf.d:ro
+    depends_on:
+      - client_admin
+      - server
