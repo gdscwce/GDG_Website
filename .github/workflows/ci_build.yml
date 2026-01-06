@@ -23,7 +23,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: ./Server
-          file: ./Docker/Dockerfile.server
+          file: ./Docker/dockerfile.server
           push: true
           tags: |
             dhanraj11/gdg-website-server:latest
