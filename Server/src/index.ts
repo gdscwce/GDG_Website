@@ -21,7 +21,7 @@ app.use("/admin", adminRouter);
 app.use("/public", commonGetRouter);
 
 //health route
-app.get("/",healthcheaker);
+app.get("/health",healthcheaker);
 
 
 
