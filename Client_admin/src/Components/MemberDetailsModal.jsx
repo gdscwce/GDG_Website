@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import api from "../api/axios";
+import ENV from "../config/env";
 
 function MemberDetailsModal({ memberId, onClose, onUpdate }) {
   const [member, setMember] = useState(null);
@@ -14,6 +15,15 @@ function MemberDetailsModal({ memberId, onClose, onUpdate }) {
     };
     fetchMember();
   }, [memberId]);
+
+  const deleteMember = async () => {
+    if (!window.confirm("Delete this member?")) return;
+  
+    await api.post(`/admin/deletemember/${memberId}`);
+    onClose();
+    onUpdate({ _id: memberId, deleted: true });
+  };
+  
 
   /* -------- UPLOAD IMAGE -------- */
   const uploadImage = async (file) => {
@@ -64,7 +74,7 @@ function MemberDetailsModal({ memberId, onClose, onUpdate }) {
         {member.memberImageKey ? (
           <>
             <img
-              src={`https://gdgwce-web.s3.ap-south-1.amazonaws.com/${member.memberImageKey}`}
+              src={`https://${ENV.PUBLIC_S3_URL}/${member.memberImageKey}`}
               className="w-full h-40 object-cover mb-2"
             />
             <div className="flex gap-2">
@@ -109,6 +119,13 @@ function MemberDetailsModal({ memberId, onClose, onUpdate }) {
         {loading && (
           <p className="text-xs mt-3 opacity-70">Processing...</p>
         )}
+
+<button
+  onClick={deleteMember}
+  className="mt-4 w-full bg-red-600 text-white py-2 rounded"
+>
+  Delete Member
+</button>
       </div>
     </div>
   );

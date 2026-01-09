@@ -6,13 +6,23 @@ import SidebarYears from '../Components/SidebarYears'
 import EventsSection from '../Components/EventSection'
 import MembersSection from '../Components/MemberSection'
 import CreateYearModal from '../Components/CreatYearModal'
+import { useNavigate } from 'react-router-dom'
 
 function Dashboard () {
   const [years, setYears] = useState([])
   const [selectedYear, setSelectedYear] = useState(null)
   const [showCreateModal, setShowCreateModal] = useState(false)
+  const navigate = useNavigate()
 
   useEffect(() => {
+
+    const token = localStorage.getItem('token')
+    if (!token) {
+      navigate('/')
+      return
+    }
+
+
     const fetchyears = async () => {
       const res = await api.get('public/years')
       setYears(res.data.years)
