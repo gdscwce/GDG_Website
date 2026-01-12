@@ -43,33 +43,40 @@ function Dashboard () {
 
   return (
     <>
-     <div className="flex h-screen bg-black text-white">
-      {/* LEFT SIDEBAR */}
-      <SidebarYears
-        years={years}
-        selectedYear={selectedYear}
-        onSelect={setSelectedYear}
-      />
+     <div className="flex h-screen bg-black text-white overflow-hidden font-sans">
+      {/* LEFT SIDEBAR - Wrapped in a fixed width container with border */}
+      <aside className="w-72 border-r border-zinc-800 flex-shrink-0 h-full overflow-y-auto">
+        <SidebarYears
+          years={years}
+          selectedYear={selectedYear}
+          onSelect={setSelectedYear}
+          onCreateYear={() => setShowCreateModal(true)}
+        />
+      </aside>
 
-      {/* MAIN CONTENT */}
-      <div className="flex-1 p-6">
+      {/* MAIN CONTENT - Added scrolling and padding */}
+      <main className="flex-1 h-full overflow-y-auto bg-black p-8 scrollbar-hide">
         {!selectedYear ? (
-          <div className="flex justify-center items-center h-full">
+          <div className="flex flex-col justify-center items-center h-full opacity-0 animate-fade-in fill-mode-forwards" style={{animationDuration: '0.5s', opacity: 1}}>
+            <div className="text-zinc-500 mb-6 text-sm">No academic year selected</div>
             <button
               onClick={() => setShowCreateModal(true)}
-              className="border px-6 py-2 rounded"
+              className="bg-white text-black px-6 py-3 rounded-lg font-semibold hover:bg-zinc-200 transition-all shadow-lg focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black"
             >
-              Create Year
+              + Create Year
             </button>
           </div>
         ) : (
-          <>
+          <div className="max-w-5xl mx-auto space-y-12">
             <EventsSection year={selectedYear} />
-            {/* MembersSection will come next */}
-            <MembersSection year={selectedYear} />
-          </>
+            
+            {/* Visual separator between sections */}
+            <div className="border-t border-zinc-900 pt-8">
+               <MembersSection year={selectedYear} />
+            </div>
+          </div>
         )}
-      </div>
+      </main>
 
 
        {/* CREATE YEAR MODAL */}

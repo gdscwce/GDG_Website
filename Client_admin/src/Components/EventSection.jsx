@@ -18,10 +18,16 @@ function EventsSection ({ year }) {
   }, [year])
 
   return (
-    <div className='mb-10'>
-      <h2 className='text-xl mb-4'>Events</h2>
+    <div className='mb-12 animate-fade-in'>
+      <div className="flex items-center justify-between mb-6">
+        <h2 className='text-2xl font-bold text-white tracking-tight'>Events</h2>
+        <span className="text-sm text-zinc-500 font-medium">
+          {events.length} {events.length === 1 ? 'Event' : 'Events'}
+        </span>
+      </div>
 
-      <div className='flex gap-4 flex-wrap'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
+        {/* Render Events */}
         {events.map(event => (
           <EventCard
             key={event._id}
@@ -31,11 +37,15 @@ function EventsSection ({ year }) {
           />
         ))}
 
+        {/* Add Event Button (Styled as a Card) */}
         <button
           onClick={() => setShowAddModal(true)}
-          className='w-40 h-28 border rounded'
+          className='group flex flex-col items-center justify-center h-40 border-2 border-dashed border-zinc-800 rounded-xl hover:border-zinc-600 hover:bg-zinc-900 transition-all duration-200'
         >
-          + Add Event
+          <div className="w-10 h-10 rounded-full bg-zinc-900 flex items-center justify-center mb-3 group-hover:bg-zinc-800 transition-colors border border-zinc-800">
+            <span className="text-xl text-zinc-400 group-hover:text-white">+</span>
+          </div>
+          <span className="text-sm font-medium text-zinc-500 group-hover:text-zinc-300">Add New Event</span>
         </button>
       </div>
 

@@ -3,6 +3,7 @@ import api from "../api/axios";
 import MemberCard from "./MemberCard";
 import MemberDetailsModal from "./MemberDetailsModal";
 import AddMembersModal from "./AddMemberModal";
+
 function MembersSection({ year }) {
   const [members, setMembers] = useState([]);
   const [showAddModal, setShowAddModal] = useState(false);
@@ -17,20 +18,27 @@ function MembersSection({ year }) {
   }, [year]);
 
   return (
-    <div className="mt-10">
+    <div className="mt-16 animate-fade-in">
       {/* HEADER */}
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="text-xl">Members</h2>
+      <div className="flex justify-between items-end mb-8 border-b border-zinc-900 pb-4">
+        <div>
+           <h2 className="text-2xl font-bold text-white tracking-tight">Members</h2>
+           <p className="text-zinc-500 text-sm mt-1 font-medium">
+             {members.length} {members.length === 1 ? 'Member' : 'Members'}
+           </p>
+        </div>
+        
         <button
           onClick={() => setShowAddModal(true)}
-          className="border px-4 py-2 rounded"
+          className="bg-white text-black px-5 py-2.5 rounded-lg text-sm font-bold hover:bg-zinc-200 transition-all shadow-lg flex items-center gap-2"
         >
-          + Add Members
+          <span className="text-lg leading-none">+</span> 
+          <span>Add Members</span>
         </button>
       </div>
 
       {/* MEMBERS GRID */}
-      <div className="flex gap-4 flex-wrap">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
         {members.map((member) => (
           <MemberCard
             key={member._id}
@@ -38,6 +46,13 @@ function MembersSection({ year }) {
             onClick={() => setSelectedMember(member)}
           />
         ))}
+
+        {/* Empty State (Optional Visual Polish) */}
+        {members.length === 0 && (
+            <div className="col-span-full py-12 text-center text-zinc-600 border border-dashed border-zinc-800 rounded-xl bg-zinc-900/30">
+                No members added to this year yet.
+            </div>
+        )}
       </div>
 
       {/* ADD MEMBERS MODAL */}
