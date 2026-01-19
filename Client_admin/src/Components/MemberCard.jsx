@@ -7,7 +7,7 @@ function MemberCard({ member, onClick }) {
       className="group bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden cursor-pointer hover:border-zinc-600 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
     >
       {/* IMAGE CONTAINER */}
-      <div className="relative aspect-[4/5] w-full bg-zinc-800 overflow-hidden">
+      <div className="relative aspect-4/5 w-full bg-zinc-800 overflow-hidden">
         {member.memberImageKey ? (
           <img
             src={`https://${ENV.PUBLIC_S3_URL}/${member.memberImageKey}`}
@@ -29,7 +29,7 @@ function MemberCard({ member, onClick }) {
         )}
         
         {/* Subtle Gradient Overlay for depth */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>
 
       {/* BASIC INFO */}
