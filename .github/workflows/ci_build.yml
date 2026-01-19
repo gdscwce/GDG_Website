@@ -46,7 +46,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: ./Client_main
-          file: ./Dockerfile/dockerfile.client_admin.prod
+          file: ./Dockerfile/dockerfile.client_main.prod
           push: true
           tags: |
             dhanraj11/gdg-website-client-main:latest
