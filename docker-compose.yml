@@ -5,13 +5,22 @@ services:
       dockerfile: ../Docker/dockerfile.server
     env_file:
       - ./Server/.env
-
+    
   client_admin:
     build:
       context: ./Client_admin
       dockerfile: ../Docker/dockerfile.client_admin
     env_file:
       - ./Client_admin/.env
+    depends_on:
+      - server
+    
+  client_main:
+    build:
+      context: ./Client_main
+      dockerfile: ../Docker/dockerfile.client_main
+    env_file:
+      - ./Client_main/.env
     depends_on:
       - server
 
@@ -25,3 +34,4 @@ services:
     depends_on:
       - client_admin
       - server
+      
