@@ -1,4 +1,5 @@
 import { useYear } from "@/contexts/YearContext";
+import CONFIG from "../../config";
 import {
   Select,
   SelectContent,
@@ -18,7 +19,7 @@ const Hero = () => {
           {/* GDG WCE Logo Section */}
           <div className="flex justify-center mb-6 animate-fade-in">
             <img 
-              src="../../public/logo.svg" // Replace with your actual path in public folder
+              src={`https://${CONFIG.S3_BASE_URL}/images/logo.svg`}
               alt="GDG WCE Logo"
               className="h-16 md:h-20 w-auto object-contain" 
             />

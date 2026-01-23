@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { Sun, Moon, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-
+import CONFIG from '../../config';
 const navLinks = [
   { name: 'Home', href: '#home' },
   { name: 'Events', href: '#events' },
@@ -34,7 +34,7 @@ const Navbar = () => {
             onClick={() => scrollToSection('#home')}
           >
             <img 
-              src="../../public/logo.svg" // Ensure this matches your filename in /public
+              src={`https://${CONFIG.S3_BASE_URL}/images/logo.svg`}
               alt="GDG WCE"
               className="h-8 w-auto object-contain" 
             />

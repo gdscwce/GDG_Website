@@ -1,3 +1,6 @@
+import CONFIG from "../../config";
+
+CONFIG
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -9,7 +12,7 @@ const Footer = () => {
           {/* Logo Section */}
           <div className="flex items-center gap-3">
             <img 
-              src="/logo.svg" 
+              src={`https://${CONFIG.S3_BASE_URL}/images/logo.svg`}
               alt="GDG WCE Logo" 
               className="h-8 w-auto object-contain" 
             />
