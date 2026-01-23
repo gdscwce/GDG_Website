@@ -14,6 +14,15 @@ const Hero = () => {
     <section id="home" className="pt-24 pb-16 md:pt-32 md:pb-24">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">
+          
+          {/* GDG WCE Logo Section */}
+          <div className="flex justify-center mb-6 animate-fade-in">
+            <img 
+              src="../../public/logo.svg" // Replace with your actual path in public folder
+              alt="GDG WCE Logo"
+              className="h-16 md:h-20 w-auto object-contain" 
+            />
+          </div>
 
           {/* Google-colored dots animation */}
           <div className="flex justify-center gap-3 mb-8 animate-fade-in">
@@ -83,14 +92,14 @@ const Hero = () => {
             style={{ animationDelay: "300ms" }}
           >
             <div className="p-6 rounded-xl bg-card card-shadow">
-              <div className="text-3xl font-bold text-google-blue">500+</div>
+              <div className="text-3xl font-bold text-google-blue">200+</div>
               <div className="text-sm text-muted-foreground mt-1">
                 Members
               </div>
             </div>
 
             <div className="p-6 rounded-xl bg-card card-shadow">
-              <div className="text-3xl font-bold text-google-red">50+</div>
+              <div className="text-3xl font-bold text-google-red">30+</div>
               <div className="text-sm text-muted-foreground mt-1">
                 Events
               </div>
@@ -104,7 +113,7 @@ const Hero = () => {
             </div>
 
             <div className="p-6 rounded-xl bg-card card-shadow">
-              <div className="text-3xl font-bold text-google-green">4</div>
+              <div className="text-3xl font-bold text-google-green">5</div>
               <div className="text-sm text-muted-foreground mt-1">
                 Years Active
               </div>
