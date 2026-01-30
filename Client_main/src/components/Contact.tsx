@@ -30,19 +30,19 @@ const Contact = () => {
               <div className="space-y-4">
                 <div className="flex items-center gap-3 text-muted-foreground">
                   <Mail className="w-5 h-5 text-google-blue" />
-                  <span>contact@gdg-example.dev</span>
+                  <span>gdscwce@walchandsangli.ac.in</span>
                 </div>
                 <div className="flex items-center gap-3 text-muted-foreground">
                   <MapPin className="w-5 h-5 text-google-red" />
-                  <span>San Francisco, CA</span>
+                  <span>Walchand College Of Engineering, Sangli</span>
                 </div>
               </div>
-            </div>
+            </div>  
 
             <div>
               <h3 className="font-display font-semibold text-lg mb-4">Follow Us</h3>
               <div className="flex gap-4">
-                <a
+                {/* <a
                   href="https://twitter.com"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -50,9 +50,9 @@ const Contact = () => {
                   aria-label="Twitter"
                 >
                   <Twitter className="w-5 h-5" />
-                </a>
+                </a> */}
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/company/gdgwce/?originalSubdomain=in"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3 rounded-full bg-secondary hover:bg-google-blue hover:text-white transition-all duration-200"
@@ -61,7 +61,7 @@ const Contact = () => {
                   <Linkedin className="w-5 h-5" />
                 </a>
                 <a
-                  href="https://github.com"
+                  href="https://github.com/gdscwce"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3 rounded-full bg-secondary hover:bg-foreground hover:text-background transition-all duration-200"

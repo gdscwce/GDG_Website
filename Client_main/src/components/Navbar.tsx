@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { Sun, Moon, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-
+import CONFIG from '../../config';
 const navLinks = [
   { name: 'Home', href: '#home' },
   { name: 'Events', href: '#events' },
@@ -27,15 +27,20 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-1">
-              <span className="w-2 h-2 rounded-full bg-google-blue"></span>
-              <span className="w-2 h-2 rounded-full bg-google-red"></span>
-              <span className="w-2 h-2 rounded-full bg-google-yellow"></span>
-              <span className="w-2 h-2 rounded-full bg-google-green"></span>
-            </div>
-            <span className="font-display font-bold text-xl">GDG</span>
+          
+          {/* Logo Section */}
+          <div 
+            className="flex items-center gap-2 cursor-pointer" 
+            onClick={() => scrollToSection('#home')}
+          >
+            <img 
+              src={`https://${CONFIG.S3_BASE_URL}/images/logo.svg`}
+              alt="GDG WCE"
+              className="h-8 w-auto object-contain" 
+            />
+            <span className="font-display font-bold text-xl tracking-tight hidden sm:block">
+              GDG - WCE
+            </span>
           </div>
 
           {/* Desktop Navigation */}

@@ -14,7 +14,7 @@ app.use(express.json());
 app.use("/admin", adminRouter);
 app.use("/public", commonGetRouter);
 //health route
-app.get("/", healthcheaker);
+app.get("/health", healthcheaker);
 const db_uri = process.env.MONGO_URI;
 const mongoconnect = async () => {
     try {
