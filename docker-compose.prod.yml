@@ -15,7 +15,7 @@ services:
       - client_main
       - server
 
-    restart: always`
+    restart: always
 
   certbot:
     image: certbot/certbot

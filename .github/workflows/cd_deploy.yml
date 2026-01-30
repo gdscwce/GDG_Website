@@ -39,7 +39,7 @@ jobs:
                     
 
                     rm -f docker-compose.prod.yml
-                    rm -rf nginx
+                    rm -rf Nginx
 
                     echo "fetching nginx and docker-compose files..."
                     git clone --depth 1 https://github.com/gdscwce/GDG_Website.git tmp_repo
