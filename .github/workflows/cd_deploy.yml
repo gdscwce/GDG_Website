@@ -39,12 +39,14 @@ jobs:
                     
 
                     rm -f docker-compose.prod.yml
+                    rm -f docker-compose.certbot.yml                    
                     rm -rf Nginx
 
                     echo "fetching nginx and docker-compose files..."
                     git clone --depth 1 https://github.com/gdscwce/GDG_Website.git tmp_repo
                     mv tmp_repo/Nginx ./Nginx
                     mv tmp_repo/docker-compose.prod.yml ./
+                    mv tmp_repo/docker-compose.certbot.yml ./
                     rm -rf tmp_repo                    
                     
                     echo "Pulling images..."
