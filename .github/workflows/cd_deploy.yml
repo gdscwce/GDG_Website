@@ -37,7 +37,7 @@ jobs:
                     export AWS_REGION=${{ secrets.AWS_REGION }}
                     export S3_BUCKET_NAME=${{ secrets.S3_BUCKET_NAME }}
                     
-
+                    docker compose -f docker-compose.prod.yml down 
                     rm -f docker-compose.prod.yml
                     rm -f docker-compose.certbot.yml                    
                     rm -rf Nginx
